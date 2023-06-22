@@ -1,9 +1,17 @@
+/**
+ * @file GestorPersonas.h
+ * @brief Definición de la clase GestorPersonas y sus funciones miembro.
+ */
+
 #include "GestorPersonas.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 
+/**
+ * @brief Ingresa una nueva persona y la guarda en un archivo de texto.
+ */
 void GestorPersonas::ingresarPersona() {
     std::string cedula, nombre, apellido, dia, mes, anio;
 
@@ -30,7 +38,7 @@ void GestorPersonas::ingresarPersona() {
 
     std::ofstream archivo("personas.txt", std::ios::app);
     if (archivo.is_open()) {
-    	archivo << cedula << " ";
+        archivo << cedula << " ";
         archivo << nombre << " ";
         archivo << apellido << " ";
         archivo << dia << "/" << mes << "/" << anio << "\n";
@@ -41,7 +49,10 @@ void GestorPersonas::ingresarPersona() {
     }
 }
 
-
+/**
+ * @brief Busca una persona por su número de cédula en un archivo de texto.
+ * @return Puntero a la instancia de la persona encontrada, o nullptr si no se encontró.
+ */
 Persona* GestorPersonas::buscarPersona() {
     std::string cedula;
     std::cout << "Ingrese el numero de cedula: ";
@@ -71,24 +82,28 @@ Persona* GestorPersonas::buscarPersona() {
     return nullptr;
 }
 
-
+/**
+ * @brief Imprime la información de una persona encontrada en el archivo de texto.
+ */
 void GestorPersonas::imprimirPersona() {
     Persona* persona = buscarPersona();
-    if(persona != nullptr ){
+    if (persona != nullptr) {
         std::cout << "Cedula: " << persona->getCedula() << std::endl;
         std::cout << "Nombre: " << persona->getNombre() << std::endl;
         std::cout << "Apellido: " << persona->getApellido() << std::endl;
         std::cout << "Fecha de nacimiento: " << persona->getFecha().getDia() << "/"
                   << persona->getFecha().getMes() << "/" << persona->getFecha().getAnio() << std::endl;
-}
+    }
 }
 
+/**
+ * @brief Elimina una persona del archivo de texto y actualiza el archivo.
+ */
 void GestorPersonas::eliminarPersona() {
     std::string cedula;
     std::cout << "Ingrese el numero de cedula: ";
     std::cin >> cedula;
     std::cout << "Persona eliminada correctamente de la lista." << std::endl;
-
 
     // Actualizar el archivo personas.txt eliminando la persona
     std::ifstream archivoEntrada("personas.txt");
@@ -128,6 +143,9 @@ void GestorPersonas::eliminarPersona() {
     }
 }
 
+/**
+ * @brief Ordena las cédulas de las personas en el archivo de texto utilizando el algoritmo Shell Sort.
+ */
 void GestorPersonas::ordenamientoShellSort() {
     // Leer el archivo de texto
     std::ifstream inputFile("personas.txt");
@@ -166,6 +184,4 @@ void GestorPersonas::ordenamientoShellSort() {
 
     // Cerrar el archivo
     inputFile.close();
-
-    
 }
