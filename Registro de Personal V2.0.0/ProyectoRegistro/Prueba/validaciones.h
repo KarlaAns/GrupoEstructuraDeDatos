@@ -12,7 +12,7 @@ public:
     ~validaciones(); // Destructor
 
     void validacionCedula(std::string& cedula);
-
+    void validacionNombre(std::string& nombre);
     void setCedula(std::string& cedula);
     std::string getCedula() const;
 };

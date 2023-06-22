@@ -2,14 +2,29 @@
 #include <iostream>
 #include <string>
 
-validaciones::validaciones() {
-    // Constructor
-}
+validaciones::validaciones() {}
 
-validaciones::~validaciones() {
-    // Destructor
-}
+validaciones::~validaciones() {}
 
+void validaciones::validacionNombre(std::string& nombre) {
+    bool bandera = false;
+    while (!bandera) {
+        std::cout << "Ingrese su nombre: ";
+        std::cin >> nombre;
+        for (int i = 0; i < nombre.length(); i++) {
+            if (isalpha(nombre[i])) {
+                bandera = true;
+            }
+            else {
+                bandera = false;
+                break;
+            }
+        }
+        if (!bandera) {
+            std::cout << "Nombre invalido, ingrese nuevamente" << std::endl;
+        }
+    }
+}
 void validaciones::validacionCedula(std::string& cedula) {
     bool bandera = false;
     while (!bandera) {
