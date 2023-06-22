@@ -2,6 +2,7 @@
 #include "GestorPersonas.h"
 #include <conio.h>
 #include <cstdlib>
+#include "ListaCircularDoble.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -57,6 +58,7 @@ void Menus::mostrarMenu() {
 }
 
 int Menus::operarMenu() {
+	ListaCircularDoble listaCircularDoble;
 	GestorPersonas gestorPersonas;
     while (true) {
         mostrarMenu();
@@ -101,12 +103,11 @@ int Menus::operarMenu() {
                 break;
                 case 4:
             	{
-                 gestorPersonas.ordenamientoShellSort();
+                 listaCircularDoble.ordenarPorNombre();
                  system("pause");
-    system("cls");
-    Menus menus(5);
-    menus.operarMenu();
-
+    			 system("cls");
+    			 Menus menus(5);
+    			 menus.operarMenu();
                }
                 break;
             case 5:
