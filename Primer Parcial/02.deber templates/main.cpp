@@ -9,7 +9,8 @@
 
 #include <iostream>
 #include "Fraccion.cpp"
-
+#include "Operacion.cpp"
+#include "Multiplicacion.cpp"
 
 
 
@@ -31,12 +32,14 @@ int main(){
     Fraccion<float> fraccion1(numerador1, denominador1);
     Fraccion<float> fraccion2(numerador2, denominador2);
 
-    if (fraccion1 != fraccion2) {
-        std::cout << "Las fracciones son diferentes." << std::endl;
-    } else {
-        std::cout << "Las fracciones son iguales." << std::endl;
-    }
-
-    return 0;
+	cout<<"Fraccion 1: "<<endl;
+	fraccion1.imprimir(fraccion1);
+	cout<<" "<<endl;
+	cout<<"Fraccion 2: "<<endl;
+	fraccion2.imprimir(fraccion2);
+	cout<<" "<<endl;
+	Fraccion<float> producto = fraccion1.calculo(fraccion1,fraccion2);
+	cout<<"Producto: "<<endl;
+	producto.imprimir(producto);
+	return 0;
 }
-
